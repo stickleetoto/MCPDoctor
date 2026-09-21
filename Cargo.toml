@@ -1,0 +1,22 @@
+[package]
+name = "mcp-doctor"
+version = "0.1.0"
+edition = "2021"
+description = "Practical MCP compatibility diagnostics with actionable remediation hints"
+license = "MIT"
+repository = "https://github.com/stickleetoto/MCPDoctor"
+readme = "README.md"
+keywords = ["mcp", "model-context-protocol", "diagnostics", "cli"]
+categories = ["command-line-utilities", "development-tools"]
+
+[[bin]]
+name = "mcp-doctor"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4.5", features = ["derive"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+url = "2"
