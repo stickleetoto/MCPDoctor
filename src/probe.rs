@@ -363,15 +363,13 @@ mod tests {
 
     #[test]
     fn parses_multiline_sse_data() {
-        let events =
-            parse_sse_data_events("event: message\ndata: {\"a\":\ndata: 1}\n\n");
+        let events = parse_sse_data_events("event: message\ndata: {\"a\":\ndata: 1}\n\n");
         assert_eq!(events, vec!["{\"a\":\n1}"]);
     }
 
     #[test]
     fn ignores_comments_and_empty_events() {
-        let events =
-            parse_sse_data_events(": keepalive\n\ndata: {\"ok\":true}\n\n");
+        let events = parse_sse_data_events(": keepalive\n\ndata: {\"ok\":true}\n\n");
         assert_eq!(events, vec!["{\"ok\":true}"]);
     }
 }
