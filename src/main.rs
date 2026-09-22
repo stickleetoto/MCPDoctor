@@ -30,8 +30,7 @@ fn run() -> Result<ExitCode> {
     match cli.command {
         Command::Check(args) => {
             let report = run_http_discovery_probe(&args)?;
-            let failed =
-                report.has_failures() || (args.fail_on_warn && report.has_warnings());
+            let failed = report.has_failures() || (args.fail_on_warn && report.has_warnings());
 
             if args.json {
                 println!("{}", serde_json::to_string_pretty(&report)?);
